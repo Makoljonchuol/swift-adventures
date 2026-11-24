@@ -55,7 +55,15 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             // once.) You can achieve this by creating multiple intermediate variables, just like
             // `x` in the example above.
 
-            throw ExerciseStepUnimplemented()  // TODO: delete this line, copy the previous step here, and implement this step
+        let x: Color?
+
+        if let aUnwrapped = user.avatar?.style.backgroundColor {
+        x = aUnwrapped
+        } else {
+        x = appTheme.backgroundColor
+        }
+
+        return x
 
             // Remember to run the tests when you have completed each step!
         },
