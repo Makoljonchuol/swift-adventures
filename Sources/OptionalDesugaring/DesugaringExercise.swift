@@ -58,11 +58,11 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
         let x: Color?
 
         if let aUnwrapped = user.avatar?.style.backgroundColor {
-        x = aUnwrapped
+            x = aUnwrapped
         } else {
-        x = appTheme.backgroundColor
+            x = appTheme.backgroundColor
         }
-
+        
         return x
 
             // Remember to run the tests when you have completed each step!
@@ -112,7 +112,22 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             //     –––––––––––––––––––––––
             //     return secondVariable
 
-            throw ExerciseStepUnimplemented()  // TODO: delete this line, copy the previous step here, and implement this step
+        let customColor: Color?
+
+        if let aUnwrapped = user.avatar {
+            customColor = aUnwrapped.style.backgroundColor
+        } else {
+            customColor = nil
+        }
+        let x: Color?
+
+        if let aUnwrapped = customColor {
+            x = aUnwrapped
+        } else {
+            x = appTheme.backgroundColor
+        }
+
+        return x
 
             // (You may find that this step is tricky to unpuzzle. The solution is not so terrible,
             // but it’s easy to get tangled up looking for it! For the problems students most
