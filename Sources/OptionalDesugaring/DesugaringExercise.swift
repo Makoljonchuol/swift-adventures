@@ -160,7 +160,27 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             //
             // Copy the previous implementation here, and remove all the optional binding.
 
-            throw ExerciseStepUnimplemented()  // TODO: delete this line, copy the previous step here, and implement this step
+            
+            let customColor: Color?
+
+            switch user.avatar {
+            case .some(let aUnwrapped):
+                customColor = aUnwrapped.style.backgroundColor
+            case .none:
+                customColor = nil
+            }
+
+            let x: Color?
+
+            switch customColor {
+            case .some(let aUnwrapped):
+                x = aUnwrapped
+            case .none:
+                x = appTheme.backgroundColor
+            }
+
+            return x
+
 
             // (You’re remembering to rerun the tests after each step, right?)
         },
