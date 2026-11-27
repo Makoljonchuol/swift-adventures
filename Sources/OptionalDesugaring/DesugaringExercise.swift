@@ -55,18 +55,18 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             // once.) You can achieve this by creating multiple intermediate variables, just like
             // `x` in the example above.
 
-        let x: Color?
+            let x: Color?
 
-        if let aUnwrapped = user.avatar?.style.backgroundColor {
-            x = aUnwrapped
-        } else {
-            x = appTheme.backgroundColor
-        }
-        
-        return x
+            if let aUnwrapped = user.avatar?.style.backgroundColor {
+                x = aUnwrapped
+            } else {
+                x = appTheme.backgroundColor
+            }
+            
+            return x
 
-            // Remember to run the tests when you have completed each step!
-        },
+                // Remember to run the tests when you have completed each step!
+            },
 
         "Step 2: Remove ?. (optional chaining)": {
             // Swift’s ?. operator, “optional chaining,” makes a property accesses evaluate to nil
@@ -112,22 +112,22 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             //     –––––––––––––––––––––––
             //     return secondVariable
 
-        let customColor: Color?
+            let customColor: Color?
 
-        if let aUnwrapped = user.avatar {
-            customColor = aUnwrapped.style.backgroundColor
-        } else {
-            customColor = nil
-        }
-        let x: Color?
+            if let aUnwrapped = user.avatar {
+                customColor = aUnwrapped.style.backgroundColor
+            } else {
+                customColor = nil
+            }
+            let x: Color?
 
-        if let aUnwrapped = customColor {
-            x = aUnwrapped
-        } else {
-            x = appTheme.backgroundColor
-        }
+            if let aUnwrapped = customColor {
+                x = aUnwrapped
+            } else {
+                x = appTheme.backgroundColor
+            }
 
-        return x
+            return x
 
             // (You may find that this step is tricky to unpuzzle. The solution is not so terrible,
             // but it’s easy to get tangled up looking for it! For the problems students most
