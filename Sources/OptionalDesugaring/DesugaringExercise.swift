@@ -193,7 +193,25 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             // say .none instead of Optional.none if Swift can already infer that it’s an Optional
             // from context, but for this exercise, we’re spelling everything out in full!)
 
-            throw ExerciseStepUnimplemented()  // TODO: delete this line, copy the previous step here, and implement this step
+            let customColor: Optional<Color>
+
+            switch user.avatar {
+            case .some(let aUnwrapped):
+                customColor = aUnwrapped.style.backgroundColor
+            case .none:
+                customColor = Optional.none
+            }
+
+            let x: Optional<Color>
+
+            switch customColor {
+            case .some(let aUnwrapped):
+                x = aUnwrapped
+            case .none:
+                x = appTheme.backgroundColor
+            }
+
+            return x
         },
 
         "Step 5: Make implicit optional wrapping explicit": {
@@ -222,7 +240,25 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             //
             // Copy the previous implementation here and remove Swift’s automatic Optional wrapping.
 
-            throw ExerciseStepUnimplemented()  // TODO: delete this line, copy the previous step here, and implement this step
+            let customColor: Optional<Color>
+
+            switch user.avatar {
+            case .some(let aUnwrapped):
+                customColor = aUnwrapped.style.backgroundColor
+            case .none:
+                customColor = Optional.none
+            }
+
+            let x: Optional<Color>
+
+            switch customColor {
+            case .some(let aUnwrapped):
+                x = Optional.some(aUnwrapped)
+            case .none:
+                x = appTheme.backgroundColor
+            }
+
+            return x
         },
 
         "Step 6: Verify desugaring using FakeOptional": { try { () -> FakeOptional<Color> in  // 🚨 DO NOT MODIFY THIS LINE! It ensures that you are returning a FakeOptional.
