@@ -281,7 +281,25 @@ func desugaringExercise(user: User, appTheme: Style) -> [String : () throws -> C
             //
             // After doing this, your code should still compile and all the tests should still pass.
 
-            throw ExerciseStepUnimplemented()  // TODO: delete this line, copy the previous step here, and implement this step
+            let customColor: FakeOptional<Color>
+
+            switch user.avatar.fakeOptional {
+            case .some(let aUnwrapped):
+                customColor = aUnwrapped.style.backgroundColor.fakeOptional
+            case .none:
+                customColor = FakeOptional.none
+            }
+
+            let x: FakeOptional<Color>
+
+            switch customColor {
+            case .some(let aUnwrapped):
+                x =  FakeOptional.some(aUnwrapped)
+            case .none:
+                x = appTheme.backgroundColor.fakeOptional
+            }
+
+            return x
 
             // Run the tests one more time, and make sure it says:
             //
